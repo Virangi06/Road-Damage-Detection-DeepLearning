@@ -1,0 +1,80 @@
+{
+    "train": {
+        "num_images": 26869,
+        "num_labels": 26869,
+        "empty_labels": 8097,
+        "total_boxes": 46296,
+        "class_counts": {
+            "D10 (Transverse Crack)": 8386,
+            "D00 (Longitudinal Crack)": 18201,
+            "D20 (Alligator Crack)": 7527,
+            "D40 (Pothole)": 7554,
+            "D43/D44 (Other Damage)": 4628
+        },
+        "country_counts": {
+            "China": 3051,
+            "Czech": 1962,
+            "India": 5368,
+            "Japan": 7432,
+            "Norway": 5708,
+            "United": 3348
+        },
+        "box_sizes": {
+            "small (<32x32)": 9893,
+            "medium (32x32-96x96)": 21869,
+            "large (>96x96)": 14534
+        }
+    },
+    "val": {
+        "num_images": 5758,
+        "num_labels": 5758,
+        "empty_labels": 1837,
+        "total_boxes": 9741,
+        "class_counts": {
+            "D10 (Transverse Crack)": 1769,
+            "D20 (Alligator Crack)": 1553,
+            "D00 (Longitudinal Crack)": 3890,
+            "D40 (Pothole)": 1564,
+            "D43/D44 (Other Damage)": 965
+        },
+        "country_counts": {
+            "China": 645,
+            "Czech": 431,
+            "India": 1172,
+            "Japan": 1550,
+            "Norway": 1256,
+            "United": 704
+        },
+        "box_sizes": {
+            "small (<32x32)": 2113,
+            "medium (32x32-96x96)": 4505,
+            "large (>96x96)": 3123
+        }
+    },
+    "test": {
+        "num_images": 5758,
+        "num_labels": 5758,
+        "empty_labels": 1790,
+        "total_boxes": 9675,
+        "class_counts": {
+            "D10 (Transverse Crack)": 1675,
+            "D00 (Longitudinal Crack)": 3925,
+            "D20 (Alligator Crack)": 1537,
+            "D40 (Pothole)": 1587,
+            "D43/D44 (Other Damage)": 951
+        },
+        "country_counts": {
+            "China": 682,
+            "Czech": 436,
+            "India": 1166,
+            "Japan": 1524,
+            "Norway": 1197,
+            "United": 753
+        },
+        "box_sizes": {
+            "small (<32x32)": 2021,
+            "medium (32x32-96x96)": 4576,
+            "large (>96x96)": 3078
+        }
+    }
+}

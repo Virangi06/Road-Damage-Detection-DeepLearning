@@ -1,0 +1,77 @@
+# ==========================================
+# GITIGNORE FOR ROAD DAMAGE DETECTION PROJECT
+# ==========================================
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python Cache & Compiled Files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyTorch & Model Checkpoints (Heavy Binaries)
+models/*.pth
+models/*.pt
+models/*.onnx
+checkpoints/*.pth
+checkpoints/*.pt
+*.pth
+*.pt
+*.bin
+*.h5
+
+# Local Dataset Files (Images & Annotation Text Files)
+train/
+val/
+test/
+data/raw/
+data/processed/
+
+# Phase Reports, Stats JSONs & Generated Evaluation Visualizations (Reference Only)
+PHASE*_REPORT.md
+*_REPORT.md
+*REPORT*.md
+#phase*_*.png
+#phase*_*.json
+results/
+
+# IDE & Editor Configurations
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook Checkpoints & Logs
+.ipynb_checkpoints
+*.log
+*.tmp
+
+# Temporary / Scratch Files
+scratch/
+tmp/
+*.bak
