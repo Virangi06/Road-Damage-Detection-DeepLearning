@@ -52,10 +52,15 @@ data/processed/
 
 # Phase Reports, Stats JSONs & Generated Evaluation Visualizations (Reference Only)
 PHASE*_REPORT.md
+PHASE4_PHASE5_PLAN.md
+PHASE3_PLAN.md
+PHASE1_2_PLAN.md
+PHASE1_2_PROGRESS.md
+
 *_REPORT.md
 *REPORT*.md
-#phase*_*.png
-#phase*_*.json
+phase*_*.png
+phase*_*.json
 results/
 
 # IDE & Editor Configurations
