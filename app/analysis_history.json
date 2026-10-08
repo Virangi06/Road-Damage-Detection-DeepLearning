@@ -1,5 +1,33 @@
 [
   {
+    "timestamp": "2026-10-08T10:56:11.471176",
+    "image_name": "China_Drone_000621.jpg",
+    "damage_detected": true,
+    "regions": 3,
+    "severity_score": 32.3,
+    "severity_category": "Medium",
+    "repair_priority": 4,
+    "overall_condition": "Fair \u2014 Schedule Maintenance",
+    "inference_ms": 8632.61,
+    "damage_types": [
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack"
+    ]
+  },
+  {
+    "timestamp": "2026-10-08T10:39:59.044148",
+    "image_name": "China_Drone_000008.jpg",
+    "damage_detected": false,
+    "regions": 0,
+    "severity_score": 0.0,
+    "severity_category": "Low",
+    "repair_priority": 1,
+    "overall_condition": "Good \u2014 No Damage Detected",
+    "inference_ms": 8355.53,
+    "damage_types": []
+  },
+  {
     "timestamp": "2026-09-28T16:49:10.709320",
     "image_name": "China_Drone_000052.jpg",
     "damage_detected": true,
