@@ -1,5 +1,34 @@
 [
   {
+    "timestamp": "2026-10-09T12:50:39.234079",
+    "image_name": "Japan_000275.jpg",
+    "damage_detected": true,
+    "regions": 4,
+    "severity_score": 38.25,
+    "severity_category": "Medium",
+    "repair_priority": 4,
+    "overall_condition": "Fair \u2014 Schedule Maintenance",
+    "inference_ms": 5301.14,
+    "damage_types": [
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack"
+    ]
+  },
+  {
+    "timestamp": "2026-10-09T10:03:15.366571",
+    "image_name": "India_008620.jpg",
+    "damage_detected": false,
+    "regions": 0,
+    "severity_score": 0.0,
+    "severity_category": "Low",
+    "repair_priority": 1,
+    "overall_condition": "Good \u2014 No Damage Detected",
+    "inference_ms": 9381.46,
+    "damage_types": []
+  },
+  {
     "timestamp": "2026-10-08T10:56:11.471176",
     "image_name": "China_Drone_000621.jpg",
     "damage_detected": true,

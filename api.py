@@ -1,16 +1,18 @@
 """
 api.py — Flask REST API for Road Damage AI
 ==========================================
-FIXED VERSION:
+FIXED VERSION v2:
 - Models loaded at startup (not lazy) — avoids first-request timeout
 - All numpy types converted to Python native before jsonify
 - Detailed error logging to console
 - Threaded Flask server with no timeout
 - CORS configured for all origins
+- /api/predict now surfaces whole-image fallback detections correctly
+- /api/calibration endpoint exposes current threshold and score stats
 
 Run:
     python api.py
-    → http://localhost:5000
+    -> http://localhost:5000
 """
 
 import os
@@ -388,10 +390,25 @@ def eda_stats():
     return jsonify({"success": True, "eda": data})
 
 
+@app.route("/api/calibration")
+def calibration():
+    """Return current confidence threshold and any calibration results."""
+    from src.inference import CONFIDENCE_THRESHOLD, FALLBACK_THRESHOLDS
+    cal_data = _load_json(
+        os.path.join(PROJECT_ROOT, "calibration_results.json"), {}
+    )
+    return jsonify({
+        "success":              True,
+        "confidence_threshold": CONFIDENCE_THRESHOLD,
+        "fallback_thresholds":  FALLBACK_THRESHOLDS,
+        "calibration_data":     cal_data,
+    })
+
+
 # ── Startup + server ──────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("=" * 60)
-    print("  Road Damage AI — Flask API Server")
+    print("  Road Damage AI -- Flask API Server (v2 fixed)")
     print("  http://localhost:5000")
     print("=" * 60)
     print()
@@ -401,7 +418,7 @@ if __name__ == "__main__":
     _load_models()
 
     print()
-    print("API ready. Starting HTTP server on port 5000…")
+    print("API ready. Starting HTTP server on port 5000...")
     print("Keep this window open while using the React frontend.")
     print()
 
