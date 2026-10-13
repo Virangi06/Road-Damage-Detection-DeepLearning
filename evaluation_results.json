@@ -1,0 +1,137 @@
+{
+  "checkpoint": "models\\best_model.pth",
+  "checkpoint_info": "epoch=2, val_loss=0.2661, trained_on=? images",
+  "old_training": {
+    "epochs": 2,
+    "final_val_loss": 0.2661,
+    "train_images": 100
+  },
+  "results_thresh_0.05": {
+    "conf_threshold": 0.05,
+    "iou_threshold": 0.5,
+    "images_evaluated": 300,
+    "images_with_gt": 300,
+    "images_detected": 179,
+    "image_level_recall": 0.5967,
+    "overall": {
+      "precision": 0.019,
+      "recall": 0.1388,
+      "f1": 0.0335,
+      "TP": 68,
+      "FP": 3502,
+      "FN": 422
+    },
+    "per_class": {
+      "D00 (Longitudinal Crack)": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 177,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "D10 (Transverse Crack)": {
+        "TP": 62,
+        "FP": 1804,
+        "FN": 91,
+        "precision": 0.0332,
+        "recall": 0.4052,
+        "f1": 0.0614
+      },
+      "D20 (Alligator Crack)": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 37,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "D40 (Pothole)": {
+        "TP": 6,
+        "FP": 1698,
+        "FN": 105,
+        "precision": 0.0035,
+        "recall": 0.0541,
+        "f1": 0.0066
+      },
+      "D43/D44 (Other Damage)": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 12,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "score_stats": {
+      "min": 0.05,
+      "max": 0.2191,
+      "mean": 0.0756,
+      "median": 0.0671
+    }
+  },
+  "results_thresh_0.15": {
+    "conf_threshold": 0.15,
+    "iou_threshold": 0.5,
+    "images_evaluated": 300,
+    "images_with_gt": 300,
+    "images_detected": 59,
+    "image_level_recall": 0.1967,
+    "overall": {
+      "precision": 0.2268,
+      "recall": 0.0449,
+      "f1": 0.075,
+      "TP": 22,
+      "FP": 75,
+      "FN": 468
+    },
+    "per_class": {
+      "D00 (Longitudinal Crack)": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 177,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "D10 (Transverse Crack)": {
+        "TP": 22,
+        "FP": 75,
+        "FN": 131,
+        "precision": 0.2268,
+        "recall": 0.1438,
+        "f1": 0.176
+      },
+      "D20 (Alligator Crack)": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 37,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "D40 (Pothole)": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 111,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "D43/D44 (Other Damage)": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 12,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "score_stats": {
+      "min": 0.1509,
+      "max": 0.2191,
+      "mean": 0.1728,
+      "median": 0.1701
+    }
+  }
+}

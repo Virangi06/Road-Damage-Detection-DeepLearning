@@ -1,5 +1,207 @@
 [
   {
+    "timestamp": "2026-10-13T14:50:04.534137",
+    "image_name": "China_MotorBike_000098.jpg",
+    "damage_detected": true,
+    "regions": 1,
+    "severity_score": 30.7,
+    "severity_category": "Medium",
+    "repair_priority": 5,
+    "overall_condition": "Fair \u2014 Schedule Maintenance",
+    "inference_ms": 139.86,
+    "damage_types": [
+      "Pothole"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T14:42:18.795203",
+    "image_name": "China_Drone_001719.jpg",
+    "damage_detected": true,
+    "regions": 1,
+    "severity_score": 30.7,
+    "severity_category": "Medium",
+    "repair_priority": 5,
+    "overall_condition": "Fair \u2014 Schedule Maintenance",
+    "inference_ms": 137.68,
+    "damage_types": [
+      "Pothole"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T14:37:26.635449",
+    "image_name": "China_Drone_000607.jpg",
+    "damage_detected": true,
+    "regions": 1,
+    "severity_score": 15.8,
+    "severity_category": "Low",
+    "repair_priority": 1,
+    "overall_condition": "Moderate \u2014 Monitor Regularly",
+    "inference_ms": 366.09,
+    "damage_types": [
+      "Longitudinal Crack"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T10:12:31.983999",
+    "image_name": "China_Drone_000334.jpg",
+    "damage_detected": true,
+    "regions": 1,
+    "severity_score": 28.2,
+    "severity_category": "Low",
+    "repair_priority": 4,
+    "overall_condition": "Moderate \u2014 Monitor Regularly",
+    "inference_ms": 501.96,
+    "damage_types": [
+      "Pothole"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T09:37:06.361538",
+    "image_name": "India_003102.jpg",
+    "damage_detected": true,
+    "regions": 1,
+    "severity_score": 23.8,
+    "severity_category": "Low",
+    "repair_priority": 3,
+    "overall_condition": "Moderate \u2014 Monitor Regularly",
+    "inference_ms": 328.23,
+    "damage_types": [
+      "Alligator Crack"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T09:35:34.100588",
+    "image_name": "India_000310.jpg",
+    "damage_detected": true,
+    "regions": 1,
+    "severity_score": 12.6,
+    "severity_category": "Low",
+    "repair_priority": 1,
+    "overall_condition": "Moderate \u2014 Monitor Regularly",
+    "inference_ms": 577.24,
+    "damage_types": [
+      "Longitudinal Crack"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T09:33:44.342074",
+    "image_name": "Norway_004815.jpg",
+    "damage_detected": true,
+    "regions": 1,
+    "severity_score": 19.7,
+    "severity_category": "Low",
+    "repair_priority": 2,
+    "overall_condition": "Moderate \u2014 Monitor Regularly",
+    "inference_ms": 930.82,
+    "damage_types": [
+      "Other Damage"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T08:26:57.851725",
+    "image_name": "China_Drone_000036.jpg",
+    "damage_detected": true,
+    "regions": 19,
+    "severity_score": 87.5,
+    "severity_category": "High",
+    "repair_priority": 9,
+    "overall_condition": "Poor \u2014 Immediate Repair Required",
+    "inference_ms": 10952.76,
+    "damage_types": [
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T08:26:01.096078",
+    "image_name": "China_Drone_000936.jpg",
+    "damage_detected": true,
+    "regions": 12,
+    "severity_score": 77.58,
+    "severity_category": "High",
+    "repair_priority": 9,
+    "overall_condition": "Poor \u2014 Immediate Repair Required",
+    "inference_ms": 9450.66,
+    "damage_types": [
+      "Transverse Crack",
+      "Pothole",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Pothole",
+      "Transverse Crack",
+      "Pothole",
+      "Pothole",
+      "Transverse Crack",
+      "Transverse Crack"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T08:24:22.510757",
+    "image_name": "United_States_004642.jpg",
+    "damage_detected": true,
+    "regions": 20,
+    "severity_score": 100.0,
+    "severity_category": "High",
+    "repair_priority": 10,
+    "overall_condition": "Poor \u2014 Immediate Repair Required",
+    "inference_ms": 10910.69,
+    "damage_types": [
+      "Pothole",
+      "Pothole",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Alligator Crack",
+      "Longitudinal Crack",
+      "Pothole",
+      "Alligator Crack",
+      "Pothole",
+      "Alligator Crack",
+      "Transverse Crack",
+      "Transverse Crack",
+      "Pothole",
+      "Pothole",
+      "Transverse Crack",
+      "Longitudinal Crack",
+      "Pothole",
+      "Pothole",
+      "Pothole",
+      "Longitudinal Crack"
+    ]
+  },
+  {
+    "timestamp": "2026-10-13T08:22:39.340622",
+    "image_name": "Japan_002701.jpg",
+    "damage_detected": true,
+    "regions": 1,
+    "severity_score": 60.0,
+    "severity_category": "Medium",
+    "repair_priority": 7,
+    "overall_condition": "Fair \u2014 Schedule Maintenance",
+    "inference_ms": 9330.76,
+    "damage_types": [
+      "Alligator Crack"
+    ]
+  },
+  {
     "timestamp": "2026-10-09T12:50:39.234079",
     "image_name": "Japan_000275.jpg",
     "damage_detected": true,

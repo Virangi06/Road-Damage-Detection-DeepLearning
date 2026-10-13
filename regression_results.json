@@ -1,0 +1,279 @@
+{
+  "confidence_threshold": 0.1,
+  "total_tests": 16,
+  "passed": 9,
+  "failed": 7,
+  "pass_rate": 0.5625,
+  "damage_recall": 0.8182,
+  "fp_rate": 1.0,
+  "results": [
+    {
+      "image": "United_States_004290.jpg",
+      "test_label": "FAILURE_CASE",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 38.2,
+      "severity_cat": "Medium",
+      "damage_types": [
+        "Pothole"
+      ],
+      "inference_ms": 3641.19,
+      "top_confidence": 0.5879,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": true
+    },
+    {
+      "image": "United_States_000709.jpg",
+      "test_label": "DAMAGED_1",
+      "damage_detected": false,
+      "regions_found": 0,
+      "severity_score": 0.0,
+      "severity_cat": "Low",
+      "damage_types": [],
+      "inference_ms": 94.9,
+      "top_confidence": 0.0,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": false
+    },
+    {
+      "image": "China_Drone_000542.jpg",
+      "test_label": "DAMAGED_2",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 22.8,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Transverse Crack"
+      ],
+      "inference_ms": 75.86,
+      "top_confidence": 0.7002,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": true
+    },
+    {
+      "image": "China_MotorBike_000704.jpg",
+      "test_label": "DAMAGED_3",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 15.2,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Transverse Crack"
+      ],
+      "inference_ms": 93.38,
+      "top_confidence": 0.4686,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": true
+    },
+    {
+      "image": "United_States_003835.jpg",
+      "test_label": "DAMAGED_4",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 35.4,
+      "severity_cat": "Medium",
+      "damage_types": [
+        "Pothole"
+      ],
+      "inference_ms": 95.07,
+      "top_confidence": 0.5439,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": true
+    },
+    {
+      "image": "United_States_003156.jpg",
+      "test_label": "DAMAGED_5",
+      "damage_detected": false,
+      "regions_found": 0,
+      "severity_score": 0.0,
+      "severity_cat": "Low",
+      "damage_types": [],
+      "inference_ms": 83.86,
+      "top_confidence": 0.0,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": false
+    },
+    {
+      "image": "Norway_005070.jpg",
+      "test_label": "DAMAGED_6",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 14.6,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Transverse Crack"
+      ],
+      "inference_ms": 272.66,
+      "top_confidence": 0.4503,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": true
+    },
+    {
+      "image": "Japan_009052.jpg",
+      "test_label": "DAMAGED_7",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 19.8,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Transverse Crack"
+      ],
+      "inference_ms": 102.03,
+      "top_confidence": 0.608,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": true
+    },
+    {
+      "image": "India_006250.jpg",
+      "test_label": "DAMAGED_8",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 41.8,
+      "severity_cat": "Medium",
+      "damage_types": [
+        "Pothole"
+      ],
+      "inference_ms": 165.5,
+      "top_confidence": 0.6434,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": true
+    },
+    {
+      "image": "India_008652.jpg",
+      "test_label": "DAMAGED_9",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 7.8,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Longitudinal Crack"
+      ],
+      "inference_ms": 97.91,
+      "top_confidence": 0.301,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": true
+    },
+    {
+      "image": "Norway_001801.jpg",
+      "test_label": "DAMAGED_10",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 26.1,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Pothole"
+      ],
+      "inference_ms": 344.12,
+      "top_confidence": 0.401,
+      "success": true,
+      "error": null,
+      "expected_damage": true,
+      "passed": true
+    },
+    {
+      "image": "India_009310.jpg",
+      "test_label": "CLEAN_1",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 28.7,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Pothole"
+      ],
+      "inference_ms": 120.68,
+      "top_confidence": 0.4417,
+      "success": true,
+      "error": null,
+      "expected_damage": false,
+      "passed": false
+    },
+    {
+      "image": "India_002615.jpg",
+      "test_label": "CLEAN_2",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 40.0,
+      "severity_cat": "Medium",
+      "damage_types": [
+        "Pothole"
+      ],
+      "inference_ms": 145.15,
+      "top_confidence": 0.6148,
+      "success": true,
+      "error": null,
+      "expected_damage": false,
+      "passed": false
+    },
+    {
+      "image": "Norway_003987.jpg",
+      "test_label": "CLEAN_3",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 24.9,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Transverse Crack"
+      ],
+      "inference_ms": 353.3,
+      "top_confidence": 0.7672,
+      "success": true,
+      "error": null,
+      "expected_damage": false,
+      "passed": false
+    },
+    {
+      "image": "Norway_004222.jpg",
+      "test_label": "CLEAN_4",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 15.7,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Transverse Crack"
+      ],
+      "inference_ms": 302.44,
+      "top_confidence": 0.4835,
+      "success": true,
+      "error": null,
+      "expected_damage": false,
+      "passed": false
+    },
+    {
+      "image": "India_004492.jpg",
+      "test_label": "CLEAN_5",
+      "damage_detected": true,
+      "regions_found": 1,
+      "severity_score": 19.2,
+      "severity_cat": "Low",
+      "damage_types": [
+        "Alligator Crack"
+      ],
+      "inference_ms": 120.4,
+      "top_confidence": 0.3701,
+      "success": true,
+      "error": null,
+      "expected_damage": false,
+      "passed": false
+    }
+  ]
+}
