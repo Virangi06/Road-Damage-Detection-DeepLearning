@@ -1,7 +1,10 @@
 import os
 import cv2
+import json
+import random
 import numpy as np
 from PIL import Image
+from collections import defaultdict
 import torch
 from torch.utils.data import Dataset, DataLoader
 import torchvision.transforms as T
@@ -29,15 +32,17 @@ def apply_clahe(img_pil):
 
 class RoadDamageCropDataset(Dataset):
     """
-    Extracts individual damage region crops from YOLO bounding boxes with 10% contextual padding border.
-    Fast indexing using os.scandir and set lookups.
+    Extracts individual damage region crops from YOLO bounding boxes with contextual padding border.
+    Uses balanced, stratified sampling across all damage classes and countries to prevent
+    overfitting and single-class collapse.
     """
-    def __init__(self, root_dir='.', split='train', img_size=224, augment=False, max_samples=None, pad_ratio=0.10):
+    def __init__(self, root_dir='.', split='train', img_size=224, augment=False, max_samples=None, pad_ratio=0.10, seed=42):
         self.root_dir = root_dir
         self.split = split
         self.img_size = img_size
         self.augment = augment and (split == 'train')
         self.pad_ratio = pad_ratio
+        self.seed = seed
         
         self.img_dir = os.path.join(root_dir, split, 'images')
         self.lbl_dir = os.path.join(root_dir, split, 'labels')
@@ -55,44 +60,73 @@ class RoadDamageCropDataset(Dataset):
         if not os.path.exists(self.lbl_dir) or not os.path.exists(self.img_dir):
             return
             
+        cache_path = os.path.join(self.root_dir, 'data', f'cached_crops_{self.split}_{max_samples}.json')
+        if os.path.exists(cache_path):
+            try:
+                with open(cache_path, 'r', encoding='utf-8') as f:
+                    self.crop_records = json.load(f)
+                return
+            except Exception:
+                pass
+
         img_files_set = set(os.listdir(self.img_dir))
+        all_lbl_files = [f for f in os.listdir(self.lbl_dir) if f.endswith('.txt')]
         
-        with os.scandir(self.lbl_dir) as entries:
-            for entry in entries:
-                if entry.is_file() and entry.name.endswith('.txt'):
-                    base_name = os.path.splitext(entry.name)[0]
-                    img_name = base_name + '.jpg'
-                    if img_name not in img_files_set:
-                        img_name = base_name + '.png'
-                        if img_name not in img_files_set:
-                            continue
-                            
-                    img_path = os.path.join(self.img_dir, img_name)
+        # Shuffle files deterministically to ensure uniform representation across countries
+        rng = random.Random(self.seed)
+        rng.shuffle(all_lbl_files)
+        
+        num_classes = len(CLASS_MAPPING)
+        per_class_limit = (max_samples // num_classes) if max_samples else None
+        
+        class_buckets = defaultdict(list)
+        
+        for entry_name in all_lbl_files:
+            base_name = os.path.splitext(entry_name)[0]
+            img_name = base_name + '.jpg'
+            if img_name not in img_files_set:
+                img_name = base_name + '.png'
+                if img_name not in img_files_set:
+                    continue
                     
-                    try:
-                        with open(entry.path, 'r', encoding='utf-8') as f:
-                            for box_idx, line in enumerate(f):
-                                parts = line.strip().split()
-                                if len(parts) >= 5:
-                                    cls_id = int(parts[0])
-                                    if 0 <= cls_id <= 4:
-                                        xc, yc, w, h = map(float, parts[1:5])
-                                        self.crop_records.append({
-                                            'img_path': img_path,
-                                            'cls_id': cls_id,
-                                            'bbox': (xc, yc, w, h),
-                                            'crop_id': f"{base_name}_{box_idx}"
-                                        })
-                                        if max_samples and len(self.crop_records) >= max_samples * 2:
-                                            break
-                    except Exception:
-                        continue
-                        
-                if max_samples and len(self.crop_records) >= max_samples * 2:
-                    break
-                    
-        if max_samples and len(self.crop_records) > max_samples:
-            self.crop_records = self.crop_records[:max_samples]
+            img_path = os.path.join(self.img_dir, img_name)
+            lbl_path = os.path.join(self.lbl_dir, entry_name)
+            
+            try:
+                with open(lbl_path, 'r', encoding='utf-8') as f:
+                    for box_idx, line in enumerate(f):
+                        parts = line.strip().split()
+                        if len(parts) >= 5:
+                            cls_id = int(parts[0])
+                            if 0 <= cls_id < num_classes:
+                                if per_class_limit is None or len(class_buckets[cls_id]) < per_class_limit:
+                                    xc, yc, w, h = map(float, parts[1:5])
+                                    class_buckets[cls_id].append({
+                                        'img_path': img_path,
+                                        'cls_id': cls_id,
+                                        'bbox': [xc, yc, w, h],
+                                        'crop_id': f"{base_name}_{box_idx}"
+                                    })
+            except Exception:
+                continue
+                
+            if per_class_limit is not None and all(len(class_buckets[c]) >= per_class_limit for c in range(num_classes)):
+                break
+                
+        # Merge balanced classes
+        merged = []
+        for c in range(num_classes):
+            merged.extend(class_buckets[c])
+        rng.shuffle(merged)
+        self.crop_records = merged
+        
+        # Save cache
+        try:
+            os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+            with open(cache_path, 'w', encoding='utf-8') as f:
+                json.dump(self.crop_records, f)
+        except Exception:
+            pass
 
     def __len__(self):
         return len(self.crop_records)
@@ -106,8 +140,10 @@ class RoadDamageCropDataset(Dataset):
         img = Image.open(img_path).convert("RGB")
         img_w, img_h = img.size
         
-        pad_w = w * self.pad_ratio
-        pad_h = h * self.pad_ratio
+        # Dynamic padding ratio for augmentation
+        pad_r = random.uniform(0.05, 0.15) if self.augment else self.pad_ratio
+        pad_w = w * pad_r
+        pad_h = h * pad_r
         
         xmin = max(0, int((xc - w / 2.0 - pad_w) * img_w))
         ymin = max(0, int((yc - h / 2.0 - pad_h) * img_h))
@@ -123,10 +159,16 @@ class RoadDamageCropDataset(Dataset):
         crop = crop.resize((self.img_size, self.img_size), Image.BILINEAR)
         
         if self.augment:
-            if torch.rand(1).item() > 0.5:
+            # Horizontal flip
+            if random.random() > 0.5:
                 crop = TF.hflip(crop)
-            if torch.rand(1).item() > 0.5:
-                color_jitter = T.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2)
+            # Slight rotation to handle cracks at various angles
+            if random.random() > 0.5:
+                angle = random.uniform(-15, 15)
+                crop = TF.rotate(crop, angle)
+            # Color jitter
+            if random.random() > 0.5:
+                color_jitter = T.ColorJitter(brightness=0.25, contrast=0.25, saturation=0.20)
                 crop = color_jitter(crop)
                 
         tensor_img = self.norm_transform(crop)
@@ -140,5 +182,5 @@ def get_crop_dataloader(root_dir='.', split='train', batch_size=32, shuffle=True
 if __name__ == '__main__':
     import time
     t0 = time.time()
-    ds = RoadDamageCropDataset(root_dir='.', split='train', max_samples=100)
-    print(f"Indexed {len(ds)} damage crops in {time.time() - t0:.2f}s!")
+    ds = RoadDamageCropDataset(root_dir='.', split='train', max_samples=500)
+    print(f"Indexed {len(ds)} balanced damage crops in {time.time() - t0:.2f}s!")
